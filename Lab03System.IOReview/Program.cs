@@ -1,30 +1,50 @@
 ﻿using System;
+using System.IO;
+
 
 namespace Lab03System.IOReview
 {
-   public class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            try
+            {
+                //String Path = "words.txt";
+                //String word = "Welcome";
 
-            int[] arr = { 4, 8, 15 };
-            // Console.WriteLine("The product of these 3 numbers is:" + challenge_One(Inesrt_Num_One()));
-            // challenge_Two();
+                // int[] arr = { 4, 8, 15 };
+                Console.WriteLine("The product of these 3 numbers is:" + challenge_One(Inesrt_One()));
 
-            //challenge_Three();
+                challenge_Two();
 
-            challenge_four();
+                challenge_Three();
 
-            //ChallengeSix();
-            //ChallengeSeven();
+                int[] arr1 = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
+                Console.WriteLine(" output :" + challenge_four(arr1));
 
-            //  ChallengeEight();
-            //int[] arr = new int[Convert.ToInt32(Console.ReadLine())];
-            //Console.WriteLine("The product of these 3 numbers is:" + insertNum(arr));
+                int[] arr2 = { 5, 25, 99, 123, 78, 96, 555, 108, 4 };
+                Console.WriteLine(" The maximm : " + challenge_Five(arr2));
 
+                // challenge_Six(Path, word);
+                // challenge_Seven(Path, word);
+
+                //challenge_Eight();
+
+                Console.Write("Please enter your sentence: ");
+               string input = Console.ReadLine();
+                challenge_Nine(input);
+
+
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error" + e.Message);
+            }
 
         }
-        public static String Inesrt_Num_One()
+        public static String Inesrt_One()
         {
             Console.WriteLine("Please enter three number :");
             string number = Console.ReadLine();
@@ -38,7 +58,7 @@ namespace Lab03System.IOReview
 
             int result = 1;
             string[] arr = number.Split(" ");
-            if(arr.Length<3)
+            if (arr.Length < 3)
             { return 0; }
 
             if (arr.Length >= 3)
@@ -109,7 +129,7 @@ namespace Lab03System.IOReview
                 }
 
                 double average = sum / num;
-                Console.WriteLine($"The average of these " + num +" numbers is: "+ average);
+                Console.WriteLine($"The average of these " + num + " numbers is: " + average);
 
                 break;
             }
@@ -137,9 +157,81 @@ namespace Lab03System.IOReview
             }
         }
 
-        public static void challenge_four()
+        public static int challenge_four(int[] arr)
+        {
+            int temp = 0;
+            int maximm = 0;
+            int result = 0;
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr.Length; j++)
+                {
+                    if (arr[j] == arr[i])
+                    {
+                        temp++;
+                    }
+                }
+                if (temp > maximm)
+                {
+                    maximm = temp;
+                    result = arr[i];
+                }
+                temp = 0;
+            }
+            return result;
+
+        }
+
+        public static int challenge_Five(int[] arr)
+        {
+            int maximm = arr[0];
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] > maximm)
+                {
+                    maximm = arr[i];
+                }
+            }
+            return maximm;
+        }
+
+
+        public static void challenge_Six(String Path, String word)
+        {
+            Console.WriteLine("Please enter any word: ");
+            word = Console.ReadLine();
+            {
+                if (File.Exists(Path))
+                {
+                    File.AppendAllText(Path, word + Environment.NewLine);
+                }
+            }
+        }
+
+        public static void challenge_Seven(String Path, String word)
+        {
+            String path = "words.txt";
+            String[] fileContent = File.ReadAllLines(path);
+            for (int i = 0; i < fileContent.Length; i++)
+                Console.WriteLine(fileContent[i]);
+        }
+
+        public static void challenge_Eight()
         {
 
+        }
+
+        public static string[] challenge_Nine(string input)
+        {
+            string[] inputArr = input.Split();
+            string[] outputArr = new string[inputArr.Length];
+            for (int i = 0; i < inputArr.Length; i++)
+            {
+                outputArr[i] = $"{inputArr[i]} : {inputArr[i].Length} / ";
+                Console.Write(outputArr[i]);
+            }
+            return outputArr;
         }
     }
 }
