@@ -1,7 +1,8 @@
 # Lab:03-System.IO-Review
 
 
-![Screenshot (188)](https://user-images.githubusercontent.com/98957434/159618963-2695ecf3-404c-4e16-9d2e-27c00e756f26.png)  
+![Screenshot (191)](https://user-images.githubusercontent.com/98957434/159738666-9a308324-e2fd-4a1c-bd09-70c33c77e325.png)
+ 
 
 
 ## Challenge 5
