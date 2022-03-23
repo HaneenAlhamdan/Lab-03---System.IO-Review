@@ -10,10 +10,7 @@ namespace Lab03System.IOReview
         {
             try
             {
-                //String Path = "words.txt";
-                //String word = "Welcome";
-
-              
+               
                 Console.WriteLine("The product of these 3 numbers is:" + challenge_One(Inesrt_One()));
 
                 challenge_Two();
@@ -21,15 +18,18 @@ namespace Lab03System.IOReview
                 challenge_Three();
 
                 int[] arr1 = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
-                Console.WriteLine(" output :" + challenge_Four(arr1));
+                Console.WriteLine("Challenge_Four output :" + challenge_Four(arr1));
 
                 int[] arr2 = { 5, 25, 99, 123, 78, 96, 555, 108, 4 };
-                Console.WriteLine(" The maximm : " + challenge_Five(arr2));
+                Console.WriteLine("Challenge_Five The maximm : " + challenge_Five(arr2));
 
-                // challenge_Six(Path, word);
-                // challenge_Seven(Path, word);
+                Console.WriteLine("Please enter any word: ");
+                String word = Console.ReadLine();
+                String Path = "words.txt";
+                challenge_Six(Path, word);
+                challenge_Seven(Path, word);
 
-                //challenge_Eight();
+                challenge_Eight();
 
                 Console.Write("Please enter your sentence: ");
                string input = Console.ReadLine();
@@ -199,12 +199,15 @@ namespace Lab03System.IOReview
 
         public static void challenge_Six(String Path, String word)
         {
-            Console.WriteLine("Please enter any word: ");
-            word = Console.ReadLine();
+            
             {
                 if (File.Exists(Path))
                 {
                     File.AppendAllText(Path, word + Environment.NewLine);
+                }
+                else
+                {
+                    File.WriteAllText(Path, word);
                 }
             }
         }
@@ -219,6 +222,26 @@ namespace Lab03System.IOReview
 
         public static void challenge_Eight()
         {
+            String Path = "words.txt";
+            string word = "Third";
+            String[] fileContent = File.ReadAllLines(Path);
+
+            string[] lineSplit = fileContent[2].Split(" ");
+            int position = fileContent[2].IndexOf(word);
+            if (position > -1)
+            {
+                for (int i = position; i < lineSplit.Length - 1; i++)
+                {
+                    lineSplit[i] = lineSplit[i + 1];
+                }
+                fileContent[2] = string.Join(" ", lineSplit);
+                File.WriteAllLines(Path, fileContent);
+                File.AppendAllText(Path, word);
+            }
+            else
+            {
+                Console.WriteLine("The word not exist");
+            }
 
         }
 
@@ -228,7 +251,7 @@ namespace Lab03System.IOReview
             string[] outputArr = new string[inputArr.Length];
             for (int i = 0; i < inputArr.Length; i++)
             {
-                outputArr[i] = $"{inputArr[i]} : {inputArr[i].Length} / ";
+                outputArr[i] = $"{inputArr[i]}: {inputArr[i].Length} / ";
                 Console.Write(outputArr[i]);
             }
             return outputArr;
