@@ -21,7 +21,7 @@ namespace Lab03System.IOReview
                 challenge_Three();
 
                 int[] arr1 = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1 };
-                Console.WriteLine(" output :" + challenge_four(arr1));
+                Console.WriteLine(" output :" + challenge_Four(arr1));
 
                 int[] arr2 = { 5, 25, 99, 123, 78, 96, 555, 108, 4 };
                 Console.WriteLine(" The maximm : " + challenge_Five(arr2));
@@ -157,7 +157,7 @@ namespace Lab03System.IOReview
             }
         }
 
-        public static int challenge_four(int[] arr)
+        public static int challenge_Four(int[] arr)
         {
             int temp = 0;
             int maximm = 0;
