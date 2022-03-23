@@ -11,9 +11,6 @@ namespace Lab03System.IOReview
             try
             {
                
-               
-
-               
                 Console.WriteLine("The product of these 3 numbers is:" + challenge_One(Inesrt_One()));
 
                 challenge_Two();
